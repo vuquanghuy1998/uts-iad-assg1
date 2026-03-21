@@ -6,6 +6,8 @@
 //  Copyright © 2026 UTS. All rights reserved.
 //
 
+// Create an enum list of errors that may be thrown during execution
+
 enum CalcError: Error {
     case invalidNumber(String)
     case invalidOperator(String)
@@ -13,6 +15,8 @@ enum CalcError: Error {
     case overflow
     case invalidExpression
 }
+
+// Customise a user-friendly message for each error
 
 extension CalcError: CustomStringConvertible {
     var description: String {
