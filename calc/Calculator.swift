@@ -10,25 +10,40 @@ import Foundation
 
 class Calculator {
 
-    // MARK: - Safe arithmetic
+    // MARK: Performing arithmetic calculation while also reporting overflow errors
+    // Here we use specialised methods provided by Swift for both doing the arithmetic calculation & report overflow errors if found
+    // see: https://developer.apple.com/documentation/swift/int/addingreportingoverflow(_:)
 
-    func safeAdd(_ a: Int, _ b: Int) throws -> Int {
+    func add(_ a: Int, _ b: Int) throws -> Int {
         let (result, overflow) = a.addingReportingOverflow(b)
         if overflow { throw CalcError.overflow }
         return result
     }
 
-    func safeSubtract(_ a: Int, _ b: Int) throws -> Int {
+    func subtract(_ a: Int, _ b: Int) throws -> Int {
         let (result, overflow) = a.subtractingReportingOverflow(b)
         if overflow { throw CalcError.overflow }
         return result
     }
 
-    func safeMultiply(_ a: Int, _ b: Int) throws -> Int {
+    func multiply(_ a: Int, _ b: Int) throws -> Int {
         let (result, overflow) = a.multipliedReportingOverflow(by: b)
         if overflow { throw CalcError.overflow }
         return result
     }
+    
+    func divide(_ a: Int, _ b: Int) throws -> Int {
+        guard b != 0 else { throw CalcError.divisionByZero }
+        let (result, overflow) = a.dividedReportingOverflow(by: b)
+        return result
+    }
+    
+    func remainder(_ a: Int, _ b: Int) throws -> Int {
+        guard b != 0 else { throw CalcError.divisionByZero }
+        let (result, overflow) = a.remainderReportingOverflow(dividingBy: b)
+        return result
+    }
+
 
     // MARK: - Main calculate function
 

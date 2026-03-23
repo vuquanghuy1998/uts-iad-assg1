@@ -13,7 +13,7 @@ class Parser {
     
     let validOperators = ["+", "-", "x", "/", "%"] // Define allowed operators
     
-    // Validate the user input string to see if it's in the right format (with numbers and operators alternating)
+    // MARK: Validate the user input string to see if it's in the right format (with numbers and operators alternating)
     func parse(args: [String]) throws -> [Token] {
         guard !args.isEmpty else { throw CalcError.invalidExpression } // Throws an error if user enters nothing
         
@@ -39,7 +39,7 @@ class Parser {
         return tokens // This class must return the tokens value so that we can pass it to the calculator.swift file
     }
     
-    // A helper function (private to this class only) to clean up/validate the numbers
+    // MARK: A helper function (private to this class only) to clean up/validate the numbers
     private func validateNumber(_ s: String) throws -> Int {
         var token = s
         
@@ -48,7 +48,7 @@ class Parser {
             token = String(token.dropFirst())
         }
         
-        // Reject decimal numbers (by checking if it contains the '.')
+        // Reject anything that is not an integer
         guard let value = Int(token), !s.contains(".") else {
             throw CalcError.invalidNumber(s)
         }
