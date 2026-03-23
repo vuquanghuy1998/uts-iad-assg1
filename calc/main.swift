@@ -16,6 +16,9 @@ let calculator = Calculator()
 do {
     let result = try calculator.calculate(args: args)
     print(result)
+} catch let e as CalcError {
+    fputs("\(e.description)\n", stderr)
+    exit(1)
 } catch {
     fputs("\(error)\n", stderr)
     exit(1)

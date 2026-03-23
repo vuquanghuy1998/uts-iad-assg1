@@ -6,7 +6,7 @@
 //  Copyright © 2026 UTS. All rights reserved.
 //
 
-// Conceptualise (initiate what a token is before it gets parsed in the parser.swift file
+// Defines the Token type used to represent parsed inputs (numbers and operators) before evaluation.
 
 enum Token {
     case number(Int)

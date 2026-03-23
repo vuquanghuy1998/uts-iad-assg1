@@ -21,7 +21,7 @@ class Parser {
         // This is because the input string should always follow this for at: number operator number operator number...
         guard args.count % 2 != 0 else { throw CalcError.invalidExpression }
         
-        // Create an empty array to store the validated/converted arguments, so that later we will pass it to calculator.swift for processing
+        // Create an empty array to store the validated/converted arguments, so that we will pass it to calculator.swift for processing later
         var tokens: [Token] = []
         
         // Now we validate that the even positions must be numbers and the odd positions must be operators
@@ -31,7 +31,7 @@ class Parser {
                 // Even positions (0, 2, 4...) must be numbers. Before appending the number to the final tokens array, try to clean up and validate it using the parseNumber helper function below.
                 tokens.append(Token.number(try validateNumber(arg)))
             } else {
-                // Odd positions (1, 3, 5...) must be operators. Before appending the operator to the final tokens array, try tovalidate it using the parseOperator helper function below.
+                // Odd positions (1, 3, 5...) must be operators. Before appending the operator to the final tokens array, try to validate it using the parseOperator helper function below.
                 tokens.append(Token.op(try validateOperator(arg)))
             }
         }

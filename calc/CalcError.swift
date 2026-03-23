@@ -23,9 +23,9 @@ extension CalcError: CustomStringConvertible {
         switch self {
         case .invalidNumber(let s):   return "Error: '\(s)' is not a valid integer. Please enter a valid integer and try again."
         case .invalidOperator(let s): return "Error: '\(s)' is not a valid operator. Please enter a valid operator and try again."
-        case .divisionByZero:         return "Error: division by zero. Please check your input and try again."
-        case .overflow:               return "Error: integer overflow. Please check your input and try again."
-        case .invalidExpression:      return "Error: invalid expression. Please check your syntax and try again."
+        case .divisionByZero:         return "Error: Division by zero. Please check your input and try again."
+        case .overflow:               return "Error: Integer overflow. Please check your input and try again."
+        case .invalidExpression:      return "Error: Invalid expression. Please check your syntax and try again."
         }
     }
 }
